@@ -11,6 +11,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -150,7 +151,7 @@ fun itemsOn(l: List<Item>, d: LocalDate) = l.filter { it.date == d.toString() }.
         }
         Text("${all.count { it.event }} رویداد · ${all.count { !it.event }} یادداشت".fa(), Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
         androidx.compose.foundation.lazy.LazyColumn {
-            items((0..6).toList()) { k ->
+            for (k in 0..6) item {
                 val d = start.plusDays(k.toLong()); val h = Jal.holiday(d)
                 Card(Modifier.fillMaxWidth().padding(vertical = 4.dp), colors = CardDefaults.cardColors(MaterialTheme.colorScheme.surfaceVariant)) {
                     Column(Modifier.padding(12.dp)) {
